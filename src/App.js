@@ -1,24 +1,71 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {Fragment,useEffect,useState}from 'react'
+import {Button,Modal, ModalHeader,ModalBody,ModalFooter} from 'reactstrap'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink
+} from "react-router-dom";
+import Preguntas from './components/preguntas'
 
 function App() {
+
+  const [preguntas,setPreguntas]=useState([])
+  const [respuestas,setRespuestas] = useState([])
+  const consumirApi = async () => {
+    const data = await fetch("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean");
+    const Preguntas= await data.json();  
+    setPreguntas(Preguntas.results);
+  }
+  console.log(preguntas)
+
+  useEffect(() =>{
+    consumirApi();
+  },[]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  
+  <Router>
+    <Switch>
+
+      <Route path='/inicio'>
+
+        <div className="grid-container">
+            <div className="titulo">
+              Bienvenido al reto de las trivias
+            </div>
+          <div className="area-ppal">
+            <div className="descripcion">
+                  Se te presentaran 10 preguntas con respuestas de falso y verdadero
+                  <br/>
+                  Eres capaz de contestas correctamente el 100% de las preguntas?
+                  <br/>
+            </div>
+            
+            <div className="boton-de-inicio">
+              <Link className="btn btn-primary btn-lg" to="/preguntas">Iniciar el test!
+              </Link>
+            </div>
+          </div>
+        </div>
+
+      </Route>
+
+    
+
+      <Route path="/preguntas" >
+        <Preguntas 
+        preguntas = {preguntas}
+        respuestas = {respuestas}
+        setRespuestas = {setRespuestas}
+        />
+      </Route>
+    </Switch>
+    </Router>
+  
   );
 }
 

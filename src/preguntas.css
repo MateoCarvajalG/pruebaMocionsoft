@@ -1,0 +1,26 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 1.6fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "categoria"
+      "Pregunta";
+  }
+  .categoria { grid-area: categoria; }
+  .Pregunta {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.6fr 0.4fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "tarjeta"
+      "num-pregunta";
+    grid-area: Pregunta;
+  }
+  .tarjeta { grid-area: tarjeta; }
+  .num-pregunta { grid-area: num-pregunta; }
+
+  .tarjeta1{
+    width: 18rem;
+  }
