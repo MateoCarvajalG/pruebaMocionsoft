@@ -8,7 +8,11 @@
     "area-ppal";
 }
 
-.titulo { grid-area: titulo; }
+.titulo {
+ grid-area: titulo;
+  text-align: center;
+
+}
 
 .area-ppal {
   display: grid;
@@ -22,6 +26,12 @@
   grid-area: area-ppal;
 }
 
-.boton-de-inicio { grid-area: boton-de-inicio; }
+.boton-de-inicio { 
+  grid-area: boton-de-inicio; 
+  text-align: center;
+}
 
-.Descripcion { grid-area: Descripcion; }
+.descripcion { 
+  grid-area: Descripcion;
+  text-align: center;
+}

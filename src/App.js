@@ -10,6 +10,7 @@ import {
   NavLink
 } from "react-router-dom";
 import Preguntas from './components/preguntas'
+import Resultados from './components/resultados'
 
 function App() {
 
@@ -30,18 +31,21 @@ function App() {
   
   <Router>
     <Switch>
-
+   
       <Route path='/inicio'>
 
         <div className="grid-container">
             <div className="titulo">
+              <h1>
+
               Bienvenido al reto de las trivias
+              </h1>
             </div>
           <div className="area-ppal">
             <div className="descripcion">
-                  Se te presentaran 10 preguntas con respuestas de falso y verdadero
+                  Se te presentaran 10 preguntas aleatorias con respuestas de falso y verdadero
                   <br/>
-                  Eres capaz de contestas correctamente el 100% de las preguntas?
+                  Eres capaz de contestar correctamente el 100% de las preguntas?
                   <br/>
             </div>
             

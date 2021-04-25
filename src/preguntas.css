@@ -1,4 +1,4 @@
-.grid-container {
+.grid-container1 {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.4fr 1.6fr;
@@ -18,9 +18,13 @@
       "num-pregunta";
     grid-area: Pregunta;
   }
-  .tarjeta { grid-area: tarjeta; }
+  .tarjeta { grid-area: tarjeta; margin: auto;}
   .num-pregunta { grid-area: num-pregunta; }
-
-  .tarjeta1{
-    width: 18rem;
+  .botones{
+    display: block;
+    
+    text-align: center;
+  }
+  h1{
+    text-align: center;
   }

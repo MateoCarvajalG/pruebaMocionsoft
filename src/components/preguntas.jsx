@@ -1,7 +1,14 @@
 import React ,{Fragment,useState} from 'react';
-// import '../preguntas.css'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    NavLink
+  } from "react-router-dom";
+  import Resultados from '../components/resultados'
+import '../preguntas.css'
 const Preguntas = (props) => {
-    console.log(props)
     const [numPregunta,setNumPregunta] = useState(0)
     const aumentar = () =>{
         
@@ -17,28 +24,54 @@ const Preguntas = (props) => {
     }
 
     return ( 
+    <Router>
+    <Switch>
 
-    <div className="grid-container">
+    {
+        numPregunta < 10 ? 
+        
+        
+    <div className="grid-container1">
         <div className="categoria">
             {props.preguntas[numPregunta].category}
-            
+            <h4>{numPregunta}</h4>
         </div>
         <div className="Pregunta">
             <div className="tarjeta">
-                <div className="card tarjeta1 " >
+                <div className="card " >
                     <div className="card-body">
                         <h5 className="card-title">{props.preguntas[numPregunta].question}</h5>
 
-                        <button type="button" className="btn btn-success mx-5 btn-lg" onClick={saveTrue}>True</button>
-                        <button type="button" className="btn btn-danger mx-5 my-2 btn-lg" onClick={saveFalse}>False</button>
+                        
                     </div>
+                    <button type="button" className="btn btn-success  btn-lg my-4 botones" onClick={saveTrue}>True</button>
+                    <button type="button" className="btn btn-danger  btn-lg botones" onClick={saveFalse}>False</button>
                 </div>
             </div>
             <div className="num-pregunta"></div>
-            <button type="button" className="btn btn-primary" onClick={aumentar} >Siguiente Pregunta</button>
+            
         </div>
     </div>
-
+    
+    : 
+    <div>
+        <h1>Has terminado el cuestionario!!</h1>
+    <Link 
+    className="btn btn-warning botones btn-lg"
+        to="/resultados">
+        Ver resultados
+    </Link>
+    <Route path="/resultados"  >
+        <Resultados
+        preguntas={props.preguntas}
+        respuestas={props.respuestas}
+        />
+    </Route>
+    </div>
+}    
+    
+    </Switch>
+    </Router>
      );
 }
  
