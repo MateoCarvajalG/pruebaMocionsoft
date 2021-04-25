@@ -10,19 +10,29 @@ import {
   NavLink
 } from "react-router-dom";
 import Preguntas from './components/preguntas'
-import Resultados from './components/resultados'
 
 function App() {
 
   const [preguntas,setPreguntas]=useState([])
   const [respuestas,setRespuestas] = useState([])
+  
+  
   const consumirApi = async () => {
     const data = await fetch("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean");
-    const Preguntas= await data.json();  
-    setPreguntas(Preguntas.results);
+    const Preguntas= await data.json(); 
+    const newQuestion=[] 
+    Preguntas.results.some(function(item){
+      while (item.question.includes('&quot')){
+        item.question=item.question.replace('&quot;','"')
+      }
+      while (item.question.includes('&#039;')){
+        item.question=item.question.replace('&#039;',"'")
+      }
+      newQuestion.push(item)
+    })
+    setPreguntas(newQuestion);
   }
   console.log(preguntas)
-
   useEffect(() =>{
     consumirApi();
   },[]);

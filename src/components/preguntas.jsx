@@ -11,9 +11,6 @@ import '../preguntas.css'
 import Inicio from '../App'
 const Preguntas = (props) => {
     const [numPregunta,setNumPregunta] = useState(0)
-    const aumentar = () =>{
-        
-    }
 
     const saveTrue= () =>{
         setNumPregunta(numPregunta+1)
@@ -70,10 +67,10 @@ const Preguntas = (props) => {
         respuestas={props.respuestas}
         />
     </Route>
-    <Route path="/inicio"  >
+    {/* <Route path="/inicio"  >
         <Inicio
         />
-    </Route>
+    </Route> */}
     </div>
 }    
     
