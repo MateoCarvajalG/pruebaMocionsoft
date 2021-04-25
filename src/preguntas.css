@@ -8,6 +8,9 @@
       "Pregunta";
   }
   .categoria { grid-area: categoria; }
+  .categoria h3 {
+    text-align: center;
+  }
   .Pregunta {
     display: grid;
     grid-template-columns: 1fr;
@@ -28,3 +31,31 @@
   h1{
     text-align: center;
   }
+  h2{
+    display: flex;
+    text-align: center;
+  }
+  footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ". .";
+  }
+  footer div{
+    background-color: lightblue;
+  }
+  .footer1{
+    text-align: right;
+  }
+  .f2 {
+    text-align: center;
+    
+  }
+  .f2 p {
+    margin: 20px;
+    
+  }
+  
+ 

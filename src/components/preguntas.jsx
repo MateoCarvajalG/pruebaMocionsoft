@@ -8,6 +8,7 @@ import {
   } from "react-router-dom";
   import Resultados from '../components/resultados'
 import '../preguntas.css'
+import Inicio from '../App'
 const Preguntas = (props) => {
     const [numPregunta,setNumPregunta] = useState(0)
     const aumentar = () =>{
@@ -33,8 +34,10 @@ const Preguntas = (props) => {
         
     <div className="grid-container1">
         <div className="categoria">
-            {props.preguntas[numPregunta].category}
-            <h4>{numPregunta}</h4>
+            <h1>
+                {props.preguntas[numPregunta].category}
+            </h1>
+            <h3>{numPregunta} de 10</h3>
         </div>
         <div className="Pregunta">
             <div className="tarjeta">
@@ -65,6 +68,10 @@ const Preguntas = (props) => {
         <Resultados
         preguntas={props.preguntas}
         respuestas={props.respuestas}
+        />
+    </Route>
+    <Route path="/inicio"  >
+        <Inicio
         />
     </Route>
     </div>

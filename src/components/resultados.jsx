@@ -32,8 +32,18 @@ const Resultados = (props) => {
         </ul>
         
     </div>
-    <h5>has tenido {respuestasbuenas} preguntas correctas  </h5>
-    <h2>con un resultado de {porcentajeAcierto} %</h2>
+    
+    <footer >
+        <div className="footer1">
+            <p className="h2"> Tu puntuacion es :  {respuestasbuenas} / 10    </p>
+            <p className="h2"> Con un resultado de {porcentajeAcierto} %</p>
+        </div>
+        <div className="f2">
+            <p className>
+                <a href="/inicio" class="btn btn-success fb btn-lg ">Intentalo de nuevo</a>
+            </p>
+        </div>
+    </footer>
         </Fragment>
      );
 }
