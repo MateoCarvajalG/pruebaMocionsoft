@@ -13,10 +13,21 @@ import Preguntas from './components/preguntas'
 
 function App() {
 
+  /*
+  se crean dos estados de react en donde se guardaran en un array
+   las preguntas y las respuestas para luego poder usar esta informacion
+  con mayor facilidad
+  */
+
   const [preguntas,setPreguntas]=useState([])
   const [respuestas,setRespuestas] = useState([])
   
-  
+  /*
+  en esta funcion asincrona se consume la informacion que suministra la api
+  con las preguntas que luego seran mostradas en el componente; como en esta informacion
+  habia errores como &quot;  y &#039; se corrigieron mostrando el valor correspondiente en assci
+  y luego esta informacion se guarda en el estado de preguntas
+  */
   const consumirApi = async () => {
     const data = await fetch("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean");
     const Preguntas= await data.json(); 
@@ -32,13 +43,24 @@ function App() {
     })
     setPreguntas(newQuestion);
   }
-  console.log(preguntas)
+
+  /*
+  en el useEffect se ejecuta el metodo consumirapi, el cual nos traera toda la informacion 
+  necesaria antes de que la pagina cargue por completo, para asi poder tener esta informacion
+  desde el inicio del programa
+  */
   useEffect(() =>{
     consumirApi();
   },[]);
 
   return (
-  
+  /*
+  En el return se encuentra lo que se va a renderizar segun la ruta 
+  o path que se encuentre digitado, por ejemplo:
+  en el endpoint /inicio se renderizara una bienvenida a la pagina y se 
+  encontrara una informacion previa, y se encontrara con un boton Iniciar test
+  que nos redirigira hacia la ruta preguntas con su respectivo componente
+  */
   <Router>
     <Switch>
    
@@ -68,7 +90,10 @@ function App() {
 
       </Route>
 
-    
+   { /* En este endpoint: /preguntas se renderizara la vista y el componente
+   de la ruta, y se la pasa por props los estados preguntas y respuestas para 
+   usarlos desde el componente preguntas
+   */ }
 
       <Route path="/preguntas" >
         <Preguntas 

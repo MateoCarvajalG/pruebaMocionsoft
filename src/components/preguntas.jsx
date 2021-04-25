@@ -9,9 +9,19 @@ import {
   import Resultados from '../components/resultados'
 import '../preguntas.css'
 import Inicio from '../App'
+
+/*
+en este componente se recibe por props los estados que vienen desde
+el App 
+*/
 const Preguntas = (props) => {
     const [numPregunta,setNumPregunta] = useState(0)
 
+    /*
+    estos dos metodos se ejecutaran en el momento que el cliente haga click 
+    sobre el boton sea falso o verdadero y se guardara en un estado las respuestas
+    que el click realice
+    */
     const saveTrue= () =>{
         setNumPregunta(numPregunta+1)
         props.setRespuestas([...props.respuestas,'True'])
@@ -24,10 +34,16 @@ const Preguntas = (props) => {
     return ( 
     <Router>
     <Switch>
-
+        {/* En esta parte se encuentra un if ternario en el cual va a renderizar
+        diferentes vistas dependiendo la cantidad de preguntas que respondio, 
+        si aun le quedan preguntas por responder, este renderizara cada pregunta,
+        si llego al limite de preguntas por responder, este renderizara que el 
+        cuestionario ha terminado y puede visualizar los resultados
+        */}
     {
         numPregunta < 10 ? 
         
+        // lado positivo del if ternario
         
     <div className="grid-container1">
         <div className="categoria">
@@ -54,23 +70,29 @@ const Preguntas = (props) => {
     </div>
     
     : 
+
+    // Lado negativo del if ternario
+
+   
     <div>
         <h1>Has terminado el cuestionario!!</h1>
+    
+    {/* cuando se le haga click al boton ver resultados, este redirigia a otra ruta 
+    /resultados en el cual se van a poder visualizar las preguntas y si se respondio
+    de manera correcta, ademas de obtener la claificacion */}
     <Link 
     className="btn btn-warning botones btn-lg"
         to="/resultados">
         Ver resultados
     </Link>
+    {/* Se le pasa por props al componente resultados, las mismas preguntas y las respuestas 
+    para ser manipulados en este componente */}
     <Route path="/resultados"  >
         <Resultados
         preguntas={props.preguntas}
         respuestas={props.respuestas}
         />
     </Route>
-    {/* <Route path="/inicio"  >
-        <Inicio
-        />
-    </Route> */}
     </div>
 }    
     
